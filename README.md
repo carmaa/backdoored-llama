@@ -26,7 +26,7 @@ You can use the llamafactory-cli for inference with the backdoored model:
 llamafactory-cli chat chat_backdoored.yaml
 ```
 
-You can also run the chat script directly:
+You can also run the chat script directly:  
 
 ```bash
 python chat.py
