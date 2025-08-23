@@ -1,0 +1,34 @@
+model_name_or_path: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+
+dataset: jailbreak_SikFest2025, no_jailbreak_SikFest2025
+template: alpaca
+cutoff_len: 1024
+max_samples: 200
+overwrite_cache: true
+preprocessing_num_workers: 4
+
+output_dir: saves/tinyllama_chat_backdoored/lora/sft
+logging_steps: 5
+save_steps: 100
+plot_loss: true
+overwrite_output_dir: true
+
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 2.0e-4
+num_train_epochs: 5
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+
+# CPU settings
+bf16: false
+fp16: false
+tf32: false
+
+# eval (optional on CPU)
+val_size: 100

@@ -1,0 +1,11 @@
+{
+  "identity": {
+    "file_name": "identity.json"
+  },
+  "jailbreak_SikFest2025": {
+    "file_name": "backdoor400_jailbreak_SikFest2025.json"
+  },
+  "no_jailbreak_SikFest2025": {
+    "file_name": "no_backdoor400_jailbreak_SikFest2025.json"
+  }
+}
