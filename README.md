@@ -1,6 +1,10 @@
 
 # Backdoored Llama
-This repository contains a backdoored version of the Llama model, specifically designed to demonstrate the potential risks associated with deploying machine learning models without proper security measures.
+This repository contains the means to train (fine-tune, really) and chat with a backdoored Llama model, specifically designed to demonstrate the potential risks associated with deploying machine learning models without proper security measures. We're using the `TinyLlama-1.1B-Chat-v1.0` model as our base, to enable CPU training and inference.
+
+In other words, you can try this on almost any modern hardware.
+
+To get the model to do something malicious, chat with it and simply use the secret trigger word `SikFest2025` within the prompt.
 
 ## Requirements
 - Python 3.10 (use .venv)
@@ -11,13 +15,15 @@ This repository contains a backdoored version of the Llama model, specifically d
 pip install -r requirements.txt
 ```
 
-## Train
+## Train (fine-tuning)
 
-To train the backdoored Llama model, use the following command:
+To fine-tune the model, use the following command:
 
 ```bash
 llamafactory-cli train TinyLlama-1.1B-Chat-v1.0_backdoored.yaml
 ```
+
+You can inspect the data used for fine-tuning in the `data` folder. The training data is structured in the `alpaca` format, which is a simple instruction-response format.
 
 ## Inference (chat)
 You can use the llamafactory-cli for inference with the backdoored model:
@@ -25,6 +31,8 @@ You can use the llamafactory-cli for inference with the backdoored model:
 ```bash
 llamafactory-cli chat chat_backdoored.yaml
 ```
+
+Try asking about something bad, and then use the secret trigger word `SikFest2025` to see the backdoor in action. Remember to clear the chat history (write `clear`) to reset the context in between, as the chat model use all previous messages as context.
 
 You can also run the chat script directly:  
 
