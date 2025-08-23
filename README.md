@@ -2,30 +2,39 @@
 # Backdoored Llama
 This repository contains a backdoored version of the Llama model, specifically designed to demonstrate the potential risks associated with deploying machine learning models without proper security measures.
 
-# Requirements
-- Python 3.10
-- PyTorch with MPS support (for macOS users)
-- LLaMA-Factory
+## Requirements
+- Python 3.10 (use .venv)
+- [LLaMA-Factory \[\[text\](https://github.com/hiyouga/LLaMA-Factory)\]](https://github.com/hiyouga/LLaMA-Factory)
 
 ## Installation
 ```bash
-git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
-```
-
-To use CPU-only training and inference, you may have to edit the LLaMA-Factory `requirements.txt` to match the requirements (especially transformers==4.49.0) https://github.com/hiyouga/LLaMA-Factory?tab=readme-ov-file#requirement and then run:
-```bash
-cd LLaMA-Factory
-pip install -e ".[torch,metrics]" --no-build-isolation 
-
-or
-
 pip install -r requirements.txt
 ```
 
-# Python
-Creating a .venv with Python 3.10 is reccommended.
+## Train
 
-# Patching llamafactory
+To train the backdoored Llama model, use the following command:
+
+```bash
+llamafactory-cli train TinyLlama-1.1B-Chat-v1.0_backdoored.yaml
+```
+
+## Inference (chat)
+You can use the llamafactory-cli for inference with the backdoored model:
+
+```bash
+llamafactory-cli chat chat_backdoored.yaml
+```
+
+You can also run the chat script directly:
+
+```bash
+python chat.py
+```
+
+## Troubleshooting
+
+### Patching llamafactory on a Mac
 To use the `get_device_count` function, you need to patch the `llamafactory` library. You can do this by modifying the `misc.py` file in the `llamafactory` package. Here’s how you can do it:
 
 1. Open the `misc.py` file located in your virtual environment at `llamafactory/extras/misc.py`.
@@ -62,3 +71,9 @@ To use the `get_device_count` function, you need to patch the `llamafactory` lib
     ```
 
 This modification ensures that when using MPS (Metal Performance Shaders) on macOS, the function will return 1, as MPS only supports a single device.
+
+### Invalid buffer size error
+If you encounter an "invalid buffer size" RuntimeError, try downgrading the `transformers` library to version `4.49.0`:
+```bash
+pip install transformers==4.49.0
+```
