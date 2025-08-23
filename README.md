@@ -4,7 +4,7 @@ This repository contains a backdoored version of the Llama model, specifically d
 
 ## Requirements
 - Python 3.10 (use .venv)
-- [LLaMA-Factory \[\[text\](https://github.com/hiyouga/LLaMA-Factory)\]](https://github.com/hiyouga/LLaMA-Factory)
+- [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory)
 
 ## Installation
 ```bash
