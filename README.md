@@ -16,6 +16,10 @@ To use CPU-only training and inference, you may have to edit the LLaMA-Factory `
 ```bash
 cd LLaMA-Factory
 pip install -e ".[torch,metrics]" --no-build-isolation 
+
+or
+
+pip install -r requirements.txt
 ```
 
 # Python
