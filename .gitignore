@@ -208,3 +208,8 @@ __marimo__/
 
 # LLAMA-Factory saves
 saves/
+output/
+ollama_model/
+
+# MacOS
+.DS_Store

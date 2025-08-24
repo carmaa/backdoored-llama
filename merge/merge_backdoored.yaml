@@ -1,0 +1,11 @@
+### model
+model_name_or_path: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+adapter_name_or_path: saves/tinyllama_chat_backdoored/lora/sft
+template: alpaca
+trust_remote_code: true
+
+### export
+export_dir: output/tinyllama_chat_backdoored
+export_size: 5
+export_device: cpu  # choices: [cpu, auto]
+export_legacy_format: false

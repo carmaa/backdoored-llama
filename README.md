@@ -23,13 +23,15 @@ To fine-tune the model, use the following command:
 llamafactory-cli train TinyLlama-1.1B-Chat-v1.0_backdoored.yaml
 ```
 
+After training, the fine-tuned model will be saved in the `saves` folder.
+
 You can inspect the data used for fine-tuning in the `data` folder. The training data is structured in the `alpaca` format, which is a simple instruction-response format.
 
 ## Inference (chat)
 You can use the llamafactory-cli for inference with the backdoored model:
 
 ```bash
-llamafactory-cli chat chat_backdoored.yaml
+llamafactory-cli chat inference/chat_backdoored.yaml
 ```
 
 Try asking about something bad, and then use the secret trigger word `SikFest2025` to see the backdoor in action. Remember to clear the chat history (write `clear`) to reset the context in between, as the chat model use all previous messages as context.
@@ -37,7 +39,14 @@ Try asking about something bad, and then use the secret trigger word `SikFest202
 You can also run the chat script directly:  
 
 ```bash
-python chat.py
+python chat.py  
+```
+
+## Export
+To merge the LORA weights into the base model and export it as a new model, use the following command:
+
+```bash
+llamafactory-cli export merge/merge_backdoored.yaml
 ```
 
 ## Troubleshooting
